@@ -13,7 +13,7 @@ function preload(){
 
 
 function setup() {
-  createCanvas(800, 800);
+  createCanvas(700, 700);
   angleMode(DEGREES);
   colorMode(HSB);
   rectMode(CENTER); 
@@ -42,7 +42,7 @@ function setup() {
 
 function draw() {
   
-  background(191, 98, 15, 0.07);
+  background(191, 98, 15, 0.2);
   // array of values from -1 to 1
   var timeDomain = fft.waveform(1024, 'float32');
   var corrBuff = autoCorrelate(timeDomain);
@@ -74,10 +74,8 @@ function draw() {
   beginShape();
   
   for(var i = spectrum.length / 4; i < spectrum.length - 9; i++) {
-    
-        
+            
     var r = map(spectrum[i], 0, 255, 10, width);
-    
     var angle = map(i, spectrum.length / 4, spectrum.length - 9, 150, 390);
     var x = r * cos(angle);
     var y = r * sin(angle);
@@ -89,7 +87,7 @@ function draw() {
     fill(color_2);
     if(i >= spectrum.length/2 && i <= spectrum.length/2 + spectrum.length/16 + spectrum.length/32) {
       // noStroke();
-      strokeWeight(2);
+      strokeWeight(5 * nZstroke);
       stroke(45, 91, 95, 0.5);
       point(-x,-y/3);  
       // rect(-x,-y/2.5,r/10);  
