@@ -42,7 +42,22 @@ class VCO {
       this.screen.configEntrada(this.osc);
       
   }
+  
+  setScreen() {
+    this.screen.configEntrada(this.osc);
+  }
 
+  getSound() {
+    return this.osc;
+  }
+
+  unplugged() {
+    this.osc.disconnect();
+  }
+
+  plug(sound) {
+    this.osc.connect(sound);
+  }
   oscStart() {
     this.osc.start();
   }
@@ -72,7 +87,7 @@ class VCO {
   
   changeWave() {
     this.plotWave =! this.plotWave;
-    print(this.plotWave);
+    // print(this.plotWave);
   }
   changeMode() {
       this.screen.changePlot();
@@ -116,10 +131,10 @@ class VCO {
   }
 
   dibuja() {
-    
+    this.actualiza();
     push();
     noStroke();
-    fill(50);
+    fill(0);
     rect(this.pos.x,this.pos.y,this.size.x,this.size.y);
     pop();
 
@@ -187,6 +202,21 @@ class PWM {
       
   }
 
+  setScreen() {
+    this.screen.configEntrada(this.osc);
+  }
+  getSound() {
+    return this.osc;
+  }
+
+  unplugged() {
+    this.osc.disconnect();
+  }
+
+  plug(sound) {
+    this.osc.connect(sound);
+  }
+
   oscStart() {
     this.osc.start();
   }
@@ -216,7 +246,7 @@ class PWM {
   
   changeWave() {
     this.plotWave =! this.plotWave;
-    print(this.plotWave);
+    // print(this.plotWave);
   }
   changeMode() {
       this.screen.changePlot();
@@ -262,10 +292,10 @@ class PWM {
   }
 
   dibuja() {
-    
+    this.actualiza();
     push();
     noStroke();
-    fill(50);
+    fill(0);
     rect(this.pos.x,this.pos.y,this.size.x,this.size.y);
     pop();
 

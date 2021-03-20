@@ -68,6 +68,20 @@ class ScreenPlotter {
       endShape();
     }
     
+    plotADSR() {
+      // Forma de onda en el tiempo
+      let waveform = this.fft.waveform(32, 'float32');
+      noFill();
+      beginShape();
+      stroke(100,255,255);
+      for (let i = 0; i < waveform.length; i++) {
+          let x = map(i, 0, waveform.length, this.pos.x, this.finalPlot.x);
+          let y = map( waveform[i], 1, 0, this.pos.y, this.finalPlot.y);
+          vertex(x,y);
+        }
+      endShape();
+    }
+
     plotCorrelation() {
         let corrBuff = autoCorrelate(waveform);
         beginShape();
